@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ipann | Portfolio",
-  description: "Portfolio pribadi Moh. Irfan Syah, siswa Rekayasa Perangkat Lunak.",
+  title: "Portofolio Irfan Syah",
+  description: "Portofolio Irfan Syah RPL SMKN 1 Pasuruan",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

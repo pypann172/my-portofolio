@@ -82,8 +82,8 @@ export default function Guestbook() {
                             <div className="space-y-3">
                                 {entries.slice(0, 4).map((entry) => (
                                     <article key={entry.id} className="rounded-2xl border border-blue-200 bg-white/70 p-4">
-                                        <p className="text-sm leading-6 text-blue-950/75">“{entry.message}”</p>
-                                        <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-blue-600">{entry.name}</p>
+                                        <p className="pesan-buku-tamu text-md leading-6 text-blue-950/75">“{entry.message}”</p>
+                                        <p className="mt-3 text-md font-bold uppercase tracking-[0.14em] text-blue-600">{entry.name}</p>
                                     </article>
                                 ))}
                             </div>

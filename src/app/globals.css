@@ -483,6 +483,30 @@ html.dark .hover\:bg-blue-100:hover {
   background-color: #1b3152;
 }
 
+html.dark .kenali-saya {
+  background-color: #16243b;
+}
+
+html.dark .pesan-buku-tamu{
+  color: #dae4ff;
+}
+
+html.dark .terus-belajar-skills{
+  color: #8da9fd;
+}
+
+html.dark .arsip-project{
+  color: #8da9fd;
+}
+
+html.dark .cv-smk{
+  color: #8da9fd;
+}
+
+html.dark .kontak-note{
+  color: #8da9fd;
+}
+
 @media (max-width: 639px) {
   body {
     padding-top: 5rem;

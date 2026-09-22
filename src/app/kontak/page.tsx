@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 const contactChannels = [
-    { label: 'Email', value: 'irfansyah1752@gmail.com', href: 'mailto:irfansyah1752@gmail.com', note: 'Untuk percakapan serius' },
+    { label: 'Email', value: 'irfansyahipann@gmail.com', href: 'mailto:irfansyahipann@gmail.com', note: 'Untuk percakapan serius' },
     { label: 'Instagram', value: '@_ipannpann', href: 'https://instagram.com/_ipannpan', note: 'Keseharian dan proses' },
-    { label: 'GitHub', value: 'FelixLeon175', href: 'https://github.com/FelixLeon175', note: 'Kode dan eksperimen' },
+    { label: 'GitHub', value: 'pypnn172', href: 'https://github.com/pypann172', note: 'Kode dan eksperimen' },
 ];
 
 export default function Kontak() {
@@ -19,7 +19,7 @@ export default function Kontak() {
                     <p className="mt-7 max-w-xl text-base leading-8 text-blue-950/65 sm:text-lg">
                         Saya selalu terbuka untuk bertemu dengan orang baru, membahas ide, atau mengerjakan sesuatu yang seru bersama.
                     </p>
-                    <Link href="mailto:irfansyah1752@gmail.com" className="mt-9 inline-flex items-center gap-3 rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-semibold text-blue-50 shadow-lg shadow-blue-700/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-800">
+                    <Link href="mailto:irfansyahipann@gmail.com" className="mt-9 inline-flex items-center gap-3 rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-semibold text-blue-50 shadow-lg shadow-blue-700/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-800">
                         Kirim email <span aria-hidden="true" className="text-lg">↗</span>
                     </Link>
                 </section>
@@ -32,7 +32,7 @@ export default function Kontak() {
                                 <div>
                                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-500">{channel.label}</p>
                                     <p className="mt-1 font-semibold text-blue-950 transition-colors group-hover:text-blue-600">{channel.value}</p>
-                                    <p className="mt-1 text-xs text-blue-950/50">{channel.note}</p>
+                                    <p className="kontak-note mt-1 text-xs text-blue-950/50">{channel.note}</p>
                                 </div>
                                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-blue-200 text-lg text-blue-600 transition-all group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white" aria-hidden="true">↗</span>
                             </Link>

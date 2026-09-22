@@ -70,7 +70,7 @@ export default function CvContent() {
                         <article className="mt-5 border-l-2 border-blue-600 pl-5">
                             <p className="text-sm font-semibold text-blue-600">Saat ini</p>
                             <h2 className="mt-2 text-xl font-bold text-blue-950">Rekayasa Perangkat Lunak</h2>
-                            <p className="mt-1 font-medium text-blue-950/70">SMK Negeri 1 Pasuruan</p>
+                            <p className="cv-smk mt-1 font-medium text-blue-950/70">SMK Negeri 1 Pasuruan</p>
                             <p className="mt-3 text-sm leading-6 text-blue-950/60">Mempelajari dasar pemrograman, web development, desain interface, dan pengembangan aplikasi.</p>
                         </article>
                     </section>

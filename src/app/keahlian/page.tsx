@@ -30,7 +30,7 @@ export default function Keahlian() {
                             Bukan hanya kumpulan tools, tapi cara saya mengubah ide menjadi produk digital yang bisa dipakai.
                         </p>
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-blue-900/60">
+                    <div className="terus-belajar-skills flex items-center gap-3 text-sm text-blue-900/60">
                         <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                         Terus belajar, terus berkembang
                     </div>

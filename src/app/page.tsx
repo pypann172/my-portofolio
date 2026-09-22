@@ -27,7 +27,7 @@ export default function Home() {
                         <Link href="/proyek" className="rounded-xl bg-blue-700 px-5 py-3 text-sm font-semibold text-blue-50 shadow-lg shadow-blue-700/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-800">
                             Lihat proyek <span aria-hidden="true">↗</span>
                         </Link>
-                        <Link href="/tentang" className="rounded-xl border border-blue-300 bg-blue-100/50 px-5 py-3 text-sm font-semibold text-blue-800 transition-colors hover:bg-blue-100">
+                        <Link href="/tentang" className="kenali-saya rounded-xl border border-blue-300 bg-blue-100/50 px-5 py-3 text-sm font-semibold text-blue-800 transition-colors hover:bg-blue-100">
                             Kenali saya
                         </Link>
                     </div>

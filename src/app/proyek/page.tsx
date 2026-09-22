@@ -18,7 +18,7 @@ export default function Projects() {
                 </section>
                 <div className="flex items-center gap-3 text-sm font-semibold text-blue-900/60 lg:pb-2">
                     <span className="grid h-10 w-10 place-items-center rounded-full bg-blue-700 text-blue-50">{projects.length}</span>
-                    <span>Projects archive</span>
+                    <span className="arsip-project">Projects archive</span>
                 </div>
             </div>
 
@@ -47,10 +47,16 @@ export default function Projects() {
             </section>
 
             <section className="mt-16 grid gap-6 border-t border-blue-200 pt-8 sm:grid-cols-3">
-                <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Status</p><p className="mt-2 font-semibold text-blue-950">Terus berkembang</p></div>
-                <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Fokus</p><p className="mt-2 font-semibold text-blue-950">UI/UX Web Development <br /> Mobile Development <br/>MockUp Design</p></div>
-                <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Tools</p><p className="mt-2 font-semibold text-blue-950">HTML, CSS, JavaScript, TypeScript <br/>TailwindCSS, NextJS
-                <br/> Figma Design</p></div>
+                <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Status</p><p className="mt-2 font-semibold text-blue-950">Terus berkembang</p>
+                </div>
+                <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Fokus</p><p className="mt-2 font-semibold text-blue-950">UI/UX Web Development <br /> Mobile Development <br/>MockUp Design</p>
+                </div>
+                <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Tools</p><p className="mt-2 font-semibold text-blue-950">HTML, CSS, JavaScript, TypeScript <br/>TailwindCSS, NextJS
+                <br/> Figma Design</p>
+                </div>
             </section>
         </main>
     );

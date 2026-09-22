@@ -19,7 +19,7 @@ export default function Footer() {
                         <span className="text-lg font-bold tracking-tight">Irfan Syah</span>
                     </Link>
                     <p className="mt-5 max-w-sm text-sm leading-7 text-blue-200/75">
-                        Portfolio pribadi Moh. Irfan Syah, siswa Rekayasa Perangkat Lunak yang senang membangun pengalaman digital.
+                        Portfolio pribadi Moh. Irfan Syah, siswa Rekayasa Perangkat Lunak pada SMK Negeri 1 Pasuruan.
                     </p>
                 </div>
 
@@ -35,15 +35,15 @@ export default function Footer() {
                 <div>
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-300">Get in touch</p>
                     <div className="mt-4 space-y-3 text-sm">
-                        <a href="mailto:irfansyah1752@gmail.com" className="block break-all text-blue-100/75 transition-colors hover:text-white">irfansyah1752@gmail.com</a>
-                        <a href="https://github.com/FelixLeon175" target="_blank" rel="noreferrer" className="block text-blue-100/75 transition-colors hover:text-white">GitHub ↗</a>
+                        <a href="mailto:irfansyahipann@gmail.com" className="block break-all text-blue-100/75 transition-colors hover:text-white">irfansyahipann@gmail.com</a>
+                        <a href="https://github.com/pypann172" target="_blank" rel="noreferrer" className="block text-blue-100/75 transition-colors hover:text-white">GitHub ↗</a>
                         <p className="text-blue-200/55">Pasuruan, Indonesia</p>
                     </div>
                 </div>
             </div>
             <div className="border-t border-blue-800/80">
                 <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-blue-200/60 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-                    <p>© {new Date().getFullYear()} Irfan Syah. Dibuat dengan rasa ingin tahu.</p>
+                    <p>© {new Date().getFullYear()} Irfan Syah.</p>
                     <p>Portfolio pribadi</p>
                 </div>
             </div>
