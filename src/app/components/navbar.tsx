@@ -123,8 +123,8 @@ export default function Navbar() {
                         style={{ left: indicator.left, width: indicator.width }}
                     />
                 </ul>
-                <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
-                <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} mobile />
+                {/* <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
+                <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} mobile /> */}
                 <button
                     type="button"
                     aria-label={isMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}

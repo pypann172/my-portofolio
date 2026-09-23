@@ -8,7 +8,7 @@ export default function Projects() {
             <div className="pointer-events-none absolute -right-32 top-16 -z-10 h-80 w-80 rounded-full bg-sky-200/50 blur-3xl" />
             <div className="grid items-end gap-8 border-b border-blue-200 pb-12 lg:grid-cols-[1fr_auto]">
                 <section className="animate-[fade-up_700ms_ease-out_both]">
-                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-blue-600">Selected work / 01</p>
+                    <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-blue-600">Selected work</p>
                     <h1 className="max-w-3xl text-5xl font-bold leading-[0.98] tracking-tight text-blue-950 sm:text-7xl">
                         Hal-hal yang <span className="text-blue-600">sedang saya buat.</span>
                     </h1>

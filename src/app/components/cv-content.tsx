@@ -3,7 +3,7 @@ const profile = {
     role: "Software Engineer",
     summary: "Siswa Rekayasa Perangkat Lunak yang sedang memperdalam web development, interface design, dan cara membangun produk digital yang rapi serta mudah digunakan.",
     location: "Pasuruan, Indonesia",
-    email: "irfansyah1752@gmail.com",
+    email: "irfansyahipann@gmail.com",
 };
 
 const skills = ["HTML", "Vanilla CSS", "JavaScript", "Python", "Tailwind CSS", "Next.js", "Supabase"];

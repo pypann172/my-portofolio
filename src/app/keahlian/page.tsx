@@ -1,8 +1,8 @@
 const technicalSkills = [
-    { name: 'HTML & CSS', level: 'Mahir', width: '80%', detail: 'Layout responsif dan interface yang rapi' },
-    { name: 'JavaScript', level: 'Menengah', width: '50%', detail: 'Interaksi web dan logika aplikasi' },
+    { name: 'HTML & CSS', level: 'Menengah', width: '60%', detail: 'Layout responsif dan interface yang rapi' },
+    { name: 'JavaScript', level: 'Dasar', width: '30%', detail: 'Interaksi web dan logika aplikasi' },
     { name: 'TypeScript', level: 'Dasar', width: '20%', detail: 'Membangun kode yang lebih terstruktur' },
-    { name: 'Python', level: 'Menengah', width: '50%', detail: 'Eksplorasi automasi dan pemrograman' },
+    { name: 'Python', level: 'Menengah', width: '40%', detail: 'Eksplorasi automasi dan pemrograman' },
     { name: 'Tailwind CSS', level: 'Dasar', width: '30%', detail: 'Desain responsif dan interaktif' },
     { name: 'Next.js', level: 'Dasar', width: '10%', detail: 'Pengembangan aplikasi web' },
     { name: 'Supabase', level: 'Dasar', width: '20%', detail: 'Pengembangan aplikasi web' },
