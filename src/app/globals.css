@@ -507,6 +507,11 @@ html.dark .kontak-note{
   color: #8da9fd;
 }
 
+body:has(.not-found-page) .global-navbar,
+body:has(.not-found-page) .global-footer {
+    display: none;
+}
+
 @media (max-width: 639px) {
   body {
     padding-top: 5rem;

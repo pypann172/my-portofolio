@@ -26,7 +26,7 @@ export const projects: Project[] = [
         slug: "portfolio-foundation",
         number: "02",
         title: "Portfolio foundation",
-        category: "Web development",
+        category: "Web Development",
         status: "In progress",
         summary: "Fondasi website portfolio pribadi untuk mendokumentasikan karya.",
         description: "Website portfolio ini menjadi ruang untuk menyimpan proses belajar, memperkenalkan kemampuan, dan menampilkan karya-karya baru secara bertahap.",

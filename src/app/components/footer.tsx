@@ -11,7 +11,7 @@ const footerLinks = [
 
 export default function Footer() {
     return (
-        <footer className="mt-auto border-t border-blue-200 bg-blue-950 text-blue-50">
+        <footer className="global-footer mt-auto border-t border-blue-200 bg-blue-950 text-blue-50">
             <div className="mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 sm:px-8 sm:py-14 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:gap-12">
                 <div>
                     <Link href="/" className="inline-flex items-center gap-3" aria-label="Kembali ke halaman utama Ipann">

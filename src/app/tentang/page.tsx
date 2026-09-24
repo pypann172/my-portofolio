@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CounterApresiasi from '../components/CounterApresiasi';
 
 const profileDetails = [
     ['Nama', 'Moh. Irfan Syah'],
@@ -41,6 +42,7 @@ export default function Tentang() {
                             </div>
                         ))}
                     </div>
+                    <CounterApresiasi />
                 </section>
             </div>
         </main>

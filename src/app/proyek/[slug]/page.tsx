@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "../projects";
+import Badge from "../../components/Badge";
 
 export function generateStaticParams() {
     return projects.map((project) => ({ slug: project.slug }));
@@ -26,7 +27,7 @@ export default async function ProjectDetail({ params }: PageProps<"/proyek/[slug
                 <section className="animate-[fade-up_700ms_ease-out_both]">
                     <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-600">Project / {project.number}</p>
                     <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-blue-950 sm:text-6xl">{project.title}</h1>
-                    <div className="mt-6 flex flex-wrap gap-2"><span className="rounded-full bg-blue-700 px-3 py-1.5 text-xs font-semibold text-blue-50">{project.category}</span><span className="rounded-full border border-blue-200 px-3 py-1.5 text-xs font-semibold text-blue-700">{project.status}</span></div>
+                    <div className="mt-6 flex flex-wrap gap-2"><Badge label={project.category} /><span className="rounded-full border border-blue-200 px-3 py-1.5 text-xs font-semibold text-blue-700">{project.status}</span></div>
                     <p className="mt-8 text-base leading-8 text-blue-950/65 sm:text-lg">{project.description}</p>
                     <div className="mt-9 border-t border-blue-200 pt-6">
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Tools &amp; focus</p>
