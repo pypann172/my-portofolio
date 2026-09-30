@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function NotFound() {
     return (
         <main className="not-found-page flex flex-1 items-center justify-center px-5 py-20 sm:px-8">
-                <div className="absolute h-40 w-39 overflow-hidden center top-40 rounded-2xl md:h-60 md:w-58 lg:h-80 lg:w-78 md:top-25 lg:top-15 md:rounded-3xl lg:rounded-6xl">
+                <div className="absolute h-40 w-39 overflow-hidden center top-5 rounded-2xl md:h-60 md:w-58 lg:h-80 lg:w-78 md:top-25 lg:top-15 md:rounded-3xl lg:rounded-6xl">
                     <Image
                         src="/tambahan/kucingMaaf.jpg"
                         alt="Ilustrasi kucing"
