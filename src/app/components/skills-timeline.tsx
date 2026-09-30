@@ -53,7 +53,7 @@ export default function SkillsTimeline() {
                                 data-skill-index={index}
                                 className={`skills-card-shell ${visibleSkills.includes(index) ? "is-visible" : ""} ${skill.side === "right" ? "sm:col-start-3" : "sm:col-start-1"}`}
                             >
-                                <div className="skills-card">
+                                <div className="skills-card float-motion">
                                     <span className="skills-card-index">0{index + 1}</span>
                                     <div>
                                         <h3 className="text-xl font-bold tracking-tight text-blue-950 sm:text-2xl">{skill.name}</h3>

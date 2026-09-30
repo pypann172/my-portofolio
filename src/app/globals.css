@@ -202,6 +202,21 @@ body {
   }
 }
 
+.float-motion {
+  animation: portrait-float 6s ease-in-out infinite;
+}
+
+@keyframes portrait-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
 @keyframes splash-logo-in {
   from {
     opacity: 0;
@@ -365,6 +380,10 @@ html.dark .skills-card-arrow {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .float-motion {
+    animation: none;
+  }
+
   .skills-card-shell {
     opacity: 1;
     transform: none;
