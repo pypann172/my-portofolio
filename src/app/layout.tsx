@@ -31,6 +31,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         {children}
         <Footer />
+        <video autoPlay loop muted playsInline className="fixed inset-0 -z-50 hidden h-full w-full object-cover opacity-0 md:block wanderer">
+          <source sizes="50px" src="/video/PREVIEW-Purple-Flowers-Night-Sky.mp4" type="video/mp4" />
+        </video>
+        <video autoPlay loop muted playsInline className="fixed inset-0 -z-50 block h-full w-full object-cover opacity-0 md:hidden wanderer">
+          <source sizes="50px" src="/video/MOBILE-Purple Flowers Night Sky.mp4" type="video/mp4" />
+        </video>
       </body>
     </html>
   );

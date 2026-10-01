@@ -35,15 +35,15 @@ export default function Home() {
 
                 <aside className="relative animate-[fade-up_700ms_180ms_ease-out_both] ">
                     <div className="absolute -right-5 -top-5 h-24 w-24 animate-[float_5s_ease-in-out_infinite] rounded-3xl border border-sky-300/80 bg-sky-200/50" />
-                    <div className="float-motion relative overflow-hidden rounded-4xl border border-blue-200 bg-blue-950 p-3 text-blue-50 shadow-2xl shadow-blue-900/25 sm:p-4">
-                        <div className="relative aspect-4/5 overflow-hidden rounded-4xl bg-blue-900">
+                    <div className="float-motion relative overflow-hidden rounded-4xl border border-blue-200 bg-blue-950 p-3 text-blue-50 shadow-2xl shadow-blue-900/25 sm:p-4 transition-transform duration-700 hover:scale-101">
+                        <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-blue-900">
                             <Image
                                 src="/ipann/ipannOsis1.JPG"
                                 alt="Moh. Irfan Syah"
                                 fill
                                 priority
                                 sizes="(max-width: 1024px) 90vw, 36vw"
-                                className="object-cover object-[67%_42%] transition-transform duration-700 hover:scale-105"
+                                className="object-cover object-[67%_42%]"
                             />
                             <div className="absolute inset-0 bg-linear-to-t from-blue-950/90 via-blue-950/5 to-transparent" />
                             <div className="absolute inset-3 rounded-3xl border border-blue-100/30" />

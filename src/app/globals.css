@@ -7,7 +7,7 @@
   --blue: #1d4ed8;
   --sky: #dbeafe;
   --line: #b8d4f5;
-  --theme-reveal-duration: 1400ms;
+  --theme-reveal-duration: 2500ms;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
   padding-top: 5.5rem;
-  transition: background-color 250ms ease, color 250ms ease;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
 }
 
 ::view-transition-old(root),
@@ -524,6 +524,13 @@ html.dark .cv-smk{
 
 html.dark .kontak-note{
   color: #8da9fd;
+}
+
+html.dark .wanderer{
+  opacity: 15%;
+}
+html.dark .anime{
+  opacity: 0%;
 }
 
 body:has(.not-found-page) .global-navbar,
