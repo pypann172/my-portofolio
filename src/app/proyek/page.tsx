@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "./projects";
+import { supabase } from "@/lib/supabase";
 import CardProyek from "../components/CardProyek";
 
 interface ProjectsPageProps {
@@ -8,6 +8,21 @@ interface ProjectsPageProps {
 
 export default async function Projects({ searchParams }: ProjectsPageProps) {
     const { category } = await searchParams;
+    const { data, error } = await supabase.from("proyek").select("*").order("id", { ascending: true });
+    if (error) {
+        return (
+            <main className="relative isolate mx-auto w-full max-w-6xl flex-1 overflow-hidden px-5 py-14 text-blue-950 sm:px-8 sm:py-20">
+                <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6">
+                    <h1 className="text-xl font-bold text-blue-900">Gagal memuat proyek</h1>
+                    <p className="mt-2 text-sm text-blue-800">{error.message}</p>
+                </div>
+            </main>
+        );
+    }
+    const projects = data.map((project) => ({
+        ...project,
+        tools: project.tools.split(",").map((tool: string) => tool.trim()),
+    }));
     const categories = [...new Set(projects.map((project) => project.category))];
     const filteredProjects = category ? projects.filter((project) => project.category === category) : projects;
 
