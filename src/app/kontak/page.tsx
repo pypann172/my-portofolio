@@ -1,12 +1,13 @@
 import Link from 'next/link';
+import { getContacts, getProfil } from "@/lib/queries";
 
-const contactChannels = [
-    { label: 'Email', value: 'irfansyahipann@gmail.com', href: 'mailto:irfansyahipann@gmail.com', note: 'Untuk percakapan serius' },
-    { label: 'Instagram', value: '@_ipannpann', href: 'https://instagram.com/_ipannpan', note: 'Keseharian dan proses' },
-    { label: 'GitHub', value: 'pypnn172', href: 'https://github.com/pypann172', note: 'Kode dan eksperimen' },
-];
+export const dynamic = "force-dynamic";
 
-export default function Kontak() {
+export default async function Kontak() {
+    const [contactChannels, profile] = await Promise.all([getContacts(), getProfil()]);
+    const emailChannel = contactChannels.find((channel) => channel.label.toLowerCase() === "email");
+    const emailHref = emailChannel?.href ?? (profile?.email ? `mailto:${profile.email}` : "mailto:");
+
     return (
         <main className="relative isolate mx-auto w-full max-w-6xl flex-1 overflow-hidden px-5 py-14 sm:px-8 sm:py-20">
             <div className="pointer-events-none absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-sky-200/45 blur-3xl" />
@@ -19,7 +20,7 @@ export default function Kontak() {
                     <p className="mt-7 max-w-xl text-base leading-8 text-blue-950/65 sm:text-lg">
                         Saya selalu terbuka untuk bertemu dengan orang baru, membahas ide, atau mengerjakan sesuatu yang seru bersama.
                     </p>
-                    <Link href="mailto:irfansyahipann@gmail.com" className="mt-9 inline-flex items-center gap-3 rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-semibold text-blue-50 shadow-lg shadow-blue-700/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-800">
+                    <Link href={emailHref} className="mt-9 inline-flex items-center gap-3 rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-semibold text-blue-50 shadow-lg shadow-blue-700/20 transition-transform hover:-translate-y-0.5 hover:bg-blue-800">
                         Kirim email <span aria-hidden="true" className="text-lg">↗</span>
                     </Link>
                 </section>

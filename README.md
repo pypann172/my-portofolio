@@ -48,6 +48,7 @@ sekarang datanya diambil dari database cloud Supabase.
 - TypeScript
 - Tailwind CSS
 - Supabase (PostgreSQL + `@supabase/supabase-js`)
+- Resend (email notifikasi buku tamu)
 - pnpm
 
 ## Fitur
@@ -58,7 +59,8 @@ sekarang datanya diambil dari database cloud Supabase.
 - Halaman Projects dengan filter kategori (`?category=...`)
 - Dynamic routing `/proyek/[slug]` untuk detail proyek
 - Halaman 404 kustom
-- Data proyek diambil langsung dari Supabase (bukan lagi data statis di kode)
+- Konten proyek, profil, galeri, keahlian, cara kerja, kontak, dan CV dimuat dari Supabase
+- Buku tamu dapat diaktifkan/nonaktifkan lewat `fitur_flags`; pesan baru menunggu persetujuan
 
 ## Progres modul
 
@@ -79,7 +81,12 @@ sekarang datanya diambil dari database cloud Supabase.
 ```
    NEXT_PUBLIC_SUPABASE_URL=url_project_supabase_kamu
    NEXT_PUBLIC_SUPABASE_ANON_KEY=publishable_key_kamu
+   RESEND_API_KEY=api_key_resend_kamu
+   BUKU_TAMU_NOTIFY_EMAIL=email_penerima_notifikasi
 ```
+`RESEND_API_KEY` dan `BUKU_TAMU_NOTIFY_EMAIL` bersifat opsional saat pengembangan. Jika
+keduanya tersedia, setiap pesan buku tamu yang tersimpan akan mengirim email notifikasi.
+Jangan gunakan awalan `NEXT_PUBLIC_` untuk variabel Resend.
 4. Jalankan development server:
 ```bash
    pnpm dev
@@ -88,9 +95,11 @@ sekarang datanya diambil dari database cloud Supabase.
 
 ## Database Supabase
 
-Semua tabel memakai Row Level Security (RLS) dengan policy `SELECT` publik, sehingga data
-hanya bisa dibaca dari website, tidak bisa diubah. Key yang dipakai di kode hanya
-publishable/anon key, secret key tidak pernah dipakai di frontend.
+Semua tabel memakai Row Level Security (RLS). Tabel konten dapat dibaca publik; tabel
+`buku_tamu` hanya menerima `INSERT` publik dan tidak pernah dibaca oleh aplikasi. Pesan yang
+sudah disetujui ditampilkan lewat view `buku_tamu_publik`, yang tidak menyertakan email.
+Counter apresiasi hanya bertambah lewat fungsi database `tambah_apresiasi()`. Key yang
+dipakai di aplikasi hanya publishable/anon key; service-role/secret key tidak digunakan.
 
 ### Tabel `proyek` (sudah terhubung ke halaman `/proyek`)
 
@@ -117,8 +126,11 @@ publishable/anon key, secret key tidak pernah dipakai di frontend.
 | skills_timeline | id, name, detail, sort_order | Daftar toolkit |
 | working_style | id, title, detail, sort_order | Bagian "Cara saya bekerja" |
 | kontak | id, label, value, href, note, sort_order | Kanal kontak |
+| profil | nama_lengkap, nama_tampil, role, deskripsi_home, bio_tentang, ringkasan_cv, fokus_saat_ini, kelas, jurusan, sekolah, kota, email, github_url, foto_home, foto_tentang, logo | Profil dan konten halaman |
+| fitur_flags | kunci, aktif, keterangan | Saklar fitur, termasuk `buku_tamu` |
 | apresiasi | id, jumlah, updated_at | Counter apresiasi |
-| buku_tamu | id, nama, pesan, created_at | Pesan buku tamu |
+| buku_tamu | id, nama, email, pesan, disetujui, created_at | Pesan buku tamu (insert publik, tanpa select publik) |
+| buku_tamu_publik (view) | id, nama, pesan, created_at | Pesan yang sudah disetujui untuk ditampilkan ke publik |
 
 ## Struktur folder utama
 

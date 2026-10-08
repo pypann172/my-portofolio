@@ -1,10 +1,11 @@
-import { supabase } from '@/lib/supabase';
+import { getProjects } from '@/lib/queries';
 
 export default async function TestSupabasePage() {
-    const { data, error } = await supabase.from('proyek').select('*');
+    const projects = await getProjects();
 
-    console.log('Data dari Supabase:', data);
-    console.log('Error (jika ada):', error);
+    console.log('Data dari Supabase:', projects);
         
     return <p>Cek terminal VS Code kalian untuk melihat hasilnya.</p>;
 }
+
+export const dynamic = "force-dynamic";

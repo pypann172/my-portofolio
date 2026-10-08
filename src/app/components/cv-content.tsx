@@ -1,20 +1,18 @@
-const profile = {
-    name: "Moh. Irfan Syah",
-    role: "Software Engineer",
-    summary: "Siswa Rekayasa Perangkat Lunak yang sedang memperdalam web development, interface design, dan cara membangun produk digital yang rapi serta mudah digunakan.",
-    location: "Pasuruan, Indonesia",
-    email: "irfansyahipann@gmail.com",
+import type { Profile, SkillTimelineItem } from "@/lib/types";
+
+type CvContentProps = {
+    profile: Profile | null;
+    skills: SkillTimelineItem[];
 };
 
-const skills = ["HTML", "Vanilla CSS", "JavaScript", "Python", "Tailwind CSS", "Next.js", "Supabase"];
+export default function CvContent({ profile, skills }: CvContentProps) {
+    const profileName = profile?.namaLengkap ?? "";
+    const highlights = [
+        { label: "Pendidikan", value: profile?.sekolah ?? "" },
+        { label: "Kelas", value: profile?.kelas ?? "" },
+        { label: "Fokus", value: profile?.fokusSaatIni ?? "" },
+    ];
 
-const highlights = [
-    { label: "Pendidikan", value: "SMK Negeri 1 Pasuruan" },
-    { label: "Kelas", value: "XI RPL 1" },
-    { label: "Fokus", value: "Web & interface" },
-];
-
-export default function CvContent() {
     return (
         <div className="mx-auto w-full max-w-5xl">
             <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -33,13 +31,13 @@ export default function CvContent() {
             <header className="grid gap-8 border-b border-blue-200 pb-10 md:grid-cols-[1fr_auto] md:items-end">
                 <div>
                     <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-600">Curriculum vitae</p>
-                    <h1 className="mt-4 text-5xl font-bold leading-none tracking-tight text-blue-950 sm:text-7xl">{profile.name}</h1>
-                    <p className="mt-5 text-xl font-semibold text-blue-700 sm:text-2xl">{profile.role}</p>
-                    <p className="mt-5 max-w-2xl text-base leading-8 text-blue-950/65 sm:text-lg">{profile.summary}</p>
+                    <h1 className="mt-4 text-5xl font-bold leading-none tracking-tight text-blue-950 sm:text-7xl">{profileName}</h1>
+                    <p className="mt-5 text-xl font-semibold text-blue-700 sm:text-2xl">{profile?.role ?? ""}</p>
+                    <p className="mt-5 max-w-2xl text-base leading-8 text-blue-950/65 sm:text-lg">{profile?.ringkasanCv ?? ""}</p>
                 </div>
                 <div className="text-left text-sm leading-7 text-blue-950/60 md:text-right">
-                    <p>{profile.location}</p>
-                    <a href={`mailto:${profile.email}`} className="font-semibold text-blue-700 hover:text-blue-950">{profile.email}</a>
+                    <p>{profile?.kota ? `${profile.kota}, Indonesia` : ""}</p>
+                    <a href={`mailto:${profile?.email ?? ""}`} className="font-semibold text-blue-700 hover:text-blue-950">{profile?.email ?? ""}</a>
                 </div>
             </header>
 
@@ -59,7 +57,7 @@ export default function CvContent() {
                     <section className="mt-10">
                         <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-500">Technical skills</p>
                         <div className="mt-4 flex flex-wrap gap-2">
-                            {skills.map((skill) => <span key={skill} className="rounded-full bg-blue-100 px-3 py-1.5 text-xs font-semibold text-blue-800">{skill}</span>)}
+                            {skills.map((skill) => <span key={skill.id} className="rounded-full bg-blue-100 px-3 py-1.5 text-xs font-semibold text-blue-800">{skill.name}</span>)}
                         </div>
                     </section>
                 </aside>

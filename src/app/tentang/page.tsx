@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import CounterApresiasi from '../components/CounterApresiasi';
+import { getApresiasi, getProfil } from "@/lib/queries";
 
-const profileDetails = [
-    ['Nama', 'Moh. Irfan Syah'],
-    ['Kelas', 'XI RPL 1'],
-    ['Jurusan', 'Rekayasa Perangkat Lunak'],
-    ['Sekolah', 'SMK Negeri 1 Pasuruan'],
-];
+export const dynamic = "force-dynamic";
 
-export default function Tentang() {
+export default async function Tentang() {
+    const [profile, initialCount] = await Promise.all([getProfil(), getApresiasi()]);
+    const profileDetails = [
+        ['Nama', profile?.namaLengkap ?? ''],
+        ['Kelas', profile?.kelas ?? ''],
+        ['Jurusan', profile?.jurusan ?? ''],
+        ['Sekolah', profile?.sekolah ?? ''],
+    ];
+
     return (
         <main className="relative isolate mx-auto w-full max-w-6xl flex-1 overflow-hidden px-5 py-14 sm:px-8 sm:py-20">
             <div className="pointer-events-none absolute -left-24 top-20 -z-10 h-64 w-64 rounded-full bg-sky-200/45 blur-3xl" />
@@ -17,12 +21,12 @@ export default function Tentang() {
                     <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl border-2 border-blue-300 float-motion" />
                     <div className="relative overflow-hidden rounded-4xl border-8 border-white bg-blue-950 shadow-2xl shadow-blue-900/15">
                         <div className="relative aspect-4/5">
-                            <Image src="/ipann/irfanFormal.jpeg" alt="Moh. Irfan Syah" fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover object-[67%_42%]" />
+                            <Image src={profile?.fotoTentang || "/ipann/irfanFormal.jpeg"} alt={profile?.namaLengkap || "Moh. Irfan Syah"} fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover object-[67%_42%]" />
                         </div>
                     </div>
                     <div className="absolute -right-5 top-8 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 shadow-lg shadow-blue-900/10 float-motion">
                         <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-500">Based in</p>
-                        <p className="mt-1 font-semibold text-blue-950">Pasuruan, ID</p>
+                        <p className="mt-1 font-semibold text-blue-950">{profile?.kota ? `${profile.kota}, ID` : ''}</p>
                     </div>
                 </div>
 
@@ -32,7 +36,7 @@ export default function Tentang() {
                         Saya suka membuat sesuatu yang <span className="text-blue-600">berarti.</span>
                     </h1>
                     <p className="mt-6 max-w-2xl text-base leading-8 text-blue-950/65 sm:text-lg">
-                        Saya adalah siswa Rekayasa Perangkat Lunak di SMK Negeri 1 Pasuruan. Saat ini saya sedang memperdalam web development dan mencari cara baru untuk membuat pengalaman digital yang sederhana, rapi, dan terasa manusiawi.
+                        {profile?.bioTentang ?? ''}
                     </p>
                     <div className="mt-9 grid max-w-xl grid-cols-1 gap-x-8 gap-y-5 border-t border-blue-200 pt-6 sm:grid-cols-2">
                         {profileDetails.map(([label, value]) => (
@@ -42,7 +46,7 @@ export default function Tentang() {
                             </div>
                         ))}
                     </div>
-                    <CounterApresiasi />
+                    <CounterApresiasi initialCount={initialCount} />
                 </section>
             </div>
         </main>

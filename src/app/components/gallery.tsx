@@ -2,16 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import type { GalleryItem } from "@/lib/types";
 
-const galleryItems = [
-    { image: "/galeri/ipann.jpeg", title: "Irfan Syah", category: "Profile" },
-    { image: "/galeri/panitia1.JPG", title: "Panitia Event OSIS", category: "Organization" },
-    { image: "/galeri/panitia2.JPG", title: "Kegiatan Event MPLS 2026", category: "Event" },
-    { image: "/galeri/panitia3.JPG", title: "Sertifikat kepanitiaan", category: "Achievement" },
-    { image: "/galeri/SertifEfe1.jpg", title: "Sertifikat EFE", category: "Certificate" },
-    { image: "/galeri/SertifLiterasiDigital.jpg", title: "Literasi Digital", category: "Certificate" },
-    { image: "/galeri/sertifPahamAI.jpeg", title: "Paham AI", category: "Certificate" },
-];
+type GalleryProps = {
+    items: GalleryItem[];
+};
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
     return (
@@ -21,7 +16,7 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
     );
 }
 
-export default function Gallery() {
+export default function Gallery({ items }: GalleryProps) {
     const galleryRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -70,7 +65,7 @@ export default function Gallery() {
             </div>
 
             <div ref={galleryRef} className="gallery-scrollbar mt-9 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
-                {galleryItems.map((item) => (
+                {items.map((item) => (
                     <article key={item.image} className="group w-[88%] shrink-0 snap-start overflow-hidden rounded-3xl border border-blue-200 bg-blue-50/70 shadow-sm transition hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-900/10 sm:w-[calc((100%-2rem)/3)]">
                         <div className="relative aspect-4/3 overflow-hidden bg-blue-100">
                             <Image src={item.image} alt={item.title} fill sizes="(max-width: 640px) 88vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" />
@@ -83,7 +78,7 @@ export default function Gallery() {
             </div>
 
             <div className="mt-5 flex justify-center gap-2" aria-label="Posisi galeri">
-                {galleryItems.map((item, index) => <button key={item.image} type="button" onClick={() => goToSlide(index)} aria-label={`Buka foto ${index + 1}`} aria-current={activeIndex === index} className={`h-2 rounded-full transition-all ${activeIndex === index ? "w-7 bg-blue-700" : "w-2 bg-blue-200 hover:bg-blue-400"}`} />)}
+                {items.map((item, index) => <button key={item.id} type="button" onClick={() => goToSlide(index)} aria-label={`Buka foto ${index + 1}`} aria-current={activeIndex === index} className={`h-2 rounded-full transition-all ${activeIndex === index ? "w-7 bg-blue-700" : "w-2 bg-blue-200 hover:bg-blue-400"}`} />)}
             </div>
         </section>
     );

@@ -6,7 +6,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import ThemeToggle from "./theme-toggle";
 
-export default function Navbar() {
+type NavbarProps = {
+    namaTampil: string;
+    logo: string;
+};
+
+export default function Navbar({ namaTampil, logo }: NavbarProps) {
     const pathname = usePathname();
     const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
     const navListRef = useRef<HTMLUListElement | null>(null);
@@ -61,6 +66,8 @@ export default function Navbar() {
         const savedTheme = window.localStorage.getItem("ipann-theme");
         const shouldUseDarkMode = savedTheme === "dark";
 
+        // Hydrate the client theme state from localStorage.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsDarkMode(shouldUseDarkMode);
         document.documentElement.classList.toggle("dark", shouldUseDarkMode);
     }, []);
@@ -94,9 +101,9 @@ export default function Navbar() {
         <nav className="global-navbar fixed left-0 right-0 top-0 z-50 mx-auto w-full px-3 pt-3 sm:px-6 sm:pt-4">
             <div className="relative z-20 mx-auto flex w-full max-w-6xl items-center justify-between gap-3 rounded-4xl border border-blue-200/80 bg-blue-50/80 px-3 py-3 shadow-[0_12px_30px_rgba(30,64,175,0.08)] backdrop-blur sm:gap-4 sm:px-4">
                 <Link href="/" className="flex shrink-0 items-center gap-3 pl-1" aria-label="Ipann home">
-                    <Image src="/ipann/logoIpann.jpg" alt="Logo Ipann" width={42} height={42}
+                    <Image src={logo} alt={`Logo ${namaTampil}`} width={42} height={42}
                         className="h-9 w-9 rounded-full object-contain shadow-sm" />
-                    <span className="text-sm font-semibold tracking-wide text-blue-950">Irfan Syah</span>
+                    <span className="text-sm font-semibold tracking-wide text-blue-950">{namaTampil}</span>
                 </Link>
                 <ul ref={navListRef} className="relative hidden min-w-0 items-center gap-1 sm:flex">
                     {menuItems.map((item) => (

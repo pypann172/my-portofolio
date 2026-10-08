@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import SplashScreen from "./components/splash-screen";
 import Footer from "./components/footer";
+import { getProfil } from "@/lib/queries";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,11 @@ export const metadata: Metadata = {
   description: "Portofolio Irfan Syah RPL SMKN 1 Pasuruan",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const profile = await getProfil();
+
   return (
     <html
       lang="id"
@@ -28,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <SplashScreen />
-        <Navbar />
+        <Navbar namaTampil={profile?.namaTampil ?? ""} logo={profile?.logo || "/ipann/logoIpann.jpg"} />
         {children}
         <Footer />
         <video autoPlay loop muted playsInline className="fixed inset-0 -z-50 hidden h-full w-full object-cover opacity-0 md:block wanderer">

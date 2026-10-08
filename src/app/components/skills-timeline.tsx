@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { SkillTimelineItem } from "@/lib/types";
 
-const skills = [
-    { name: "HTML", detail: "Semantic structure", side: "left" },
-    { name: "Vanilla CSS", detail: "Layout & styling", side: "right" },
-    { name: "JavaScript", detail: "Interactive logic", side: "left" },
-    { name: "Python", detail: "Programming basics", side: "right" },
-    { name: "Tailwind CSS", detail: "Utility-first UI", side: "left" },
-    { name: "Next.js", detail: "React framework", side: "right" },
-    { name: "Supabase", detail: "Backend & database", side: "left" },
-] as const;
+type SkillsTimelineProps = {
+    items: SkillTimelineItem[];
+};
 
-export default function SkillsTimeline() {
+export default function SkillsTimeline({ items }: SkillsTimelineProps) {
     const sectionRef = useRef<HTMLElement>(null);
     const [visibleSkills, setVisibleSkills] = useState<number[]>([]);
 
@@ -47,11 +42,13 @@ export default function SkillsTimeline() {
             <div className="relative mx-auto mt-14 max-w-4xl">
                 <div className="skills-timeline-line" aria-hidden="true" />
                 <div className="space-y-7 sm:space-y-10">
-                    {skills.map((skill, index) => (
-                        <div key={skill.name} className={`skills-timeline-row ${skill.side === "right" ? "skills-timeline-row-right" : "skills-timeline-row-left"}`}>
+                    {items.map((skill, index) => {
+                        const side = index % 2 === 0 ? "left" : "right";
+                        return (
+                        <div key={skill.id} className={`skills-timeline-row ${side === "right" ? "skills-timeline-row-right" : "skills-timeline-row-left"}`}>
                             <div
                                 data-skill-index={index}
-                                className={`skills-card-shell ${visibleSkills.includes(index) ? "is-visible" : ""} ${skill.side === "right" ? "sm:col-start-3" : "sm:col-start-1"}`}
+                                className={`skills-card-shell ${visibleSkills.includes(index) ? "is-visible" : ""} ${side === "right" ? "sm:col-start-3" : "sm:col-start-1"}`}
                             >
                                 <div className="skills-card float-motion">
                                     <span className="skills-card-index">0{index + 1}</span>
@@ -64,7 +61,8 @@ export default function SkillsTimeline() {
                             </div>
                             <span className="skills-timeline-node" aria-hidden="true" />
                         </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

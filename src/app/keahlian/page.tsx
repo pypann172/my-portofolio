@@ -1,21 +1,9 @@
-const technicalSkills = [
-    { name: 'HTML & CSS', level: 'Menengah', width: '60%', detail: 'Layout responsif dan interface yang rapi' },
-    { name: 'JavaScript', level: 'Dasar', width: '30%', detail: 'Interaksi web dan logika aplikasi' },
-    { name: 'TypeScript', level: 'Dasar', width: '20%', detail: 'Membangun kode yang lebih terstruktur' },
-    { name: 'Python', level: 'Menengah', width: '40%', detail: 'Eksplorasi automasi dan pemrograman' },
-    { name: 'Tailwind CSS', level: 'Dasar', width: '30%', detail: 'Desain responsif dan interaktif' },
-    { name: 'Next.js', level: 'Dasar', width: '10%', detail: 'Pengembangan aplikasi web' },
-    { name: 'Supabase', level: 'Dasar', width: '20%', detail: 'Pengembangan aplikasi web' },
-    { name: 'MySQL', level: 'Menengah', width: '50%', detail: 'Pengembangan aplikasi web' },
-];
+import { getSkills, getWorkingStyle } from "@/lib/queries";
 
-const workingStyle = [
-    ['01', 'Problem solving', 'Memecah masalah besar menjadi langkah yang jelas.'],
-    ['02', 'Adaptive learner', 'Cepat belajar tools baru saat proyek membutuhkannya.'],
-    ['03', 'Prompt engineering', 'Menggunakan AI sebagai partner berpikir, bukan pengganti proses.'],
-];
+export const dynamic = "force-dynamic";
 
-export default function Keahlian() {
+export default async function Keahlian() {
+    const [technicalSkills, workingStyle] = await Promise.all([getSkills(), getWorkingStyle()]);
     return (
         <main className="relative isolate mx-auto w-full max-w-6xl flex-1 overflow-hidden px-5 py-14 sm:px-8 sm:py-20">
             <div className="pointer-events-none absolute right-0 top-0 -z-10 h-80 w-80 rounded-full bg-blue-200/40 blur-3xl" />
@@ -54,7 +42,7 @@ export default function Keahlian() {
                                     <span className="text-xs font-semibold text-blue-600">{skill.level}</span>
                                 </div>
                                 <div className="h-2 overflow-hidden rounded-full bg-blue-100">
-                                    <div className="h-full rounded-full bg-blue-600" style={{ width: skill.width }} />
+                                    <div className="h-full rounded-full bg-blue-600" style={{ width: `${skill.widthPercent}%` }} />
                                 </div>
                                 <p className="mt-2 text-xs text-blue-950/55">{skill.detail}</p>
                             </div>
@@ -66,12 +54,12 @@ export default function Keahlian() {
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-300">Beyond code</p>
                     <h2 className="mt-2 text-2xl font-bold">Cara saya bekerja</h2>
                     <div className="mt-8 divide-y divide-blue-800">
-                        {workingStyle.map(([number, title, detail]) => (
-                            <div key={number} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                                <span className="font-mono text-xs text-sky-300">{number}</span>
+                        {workingStyle.map((item, index) => (
+                            <div key={item.id} className="flex gap-4 py-5 first:pt-0 last:pb-0">
+                                <span className="font-mono text-xs text-sky-300">{String(index + 1).padStart(2, "0")}</span>
                                 <div>
-                                    <h3 className="font-semibold">{title}</h3>
-                                    <p className="mt-1 text-sm leading-6 text-blue-200/70">{detail}</p>
+                                    <h3 className="font-semibold">{item.title}</h3>
+                                    <p className="mt-1 text-sm leading-6 text-blue-200/70">{item.detail}</p>
                                 </div>
                             </div>
                         ))}

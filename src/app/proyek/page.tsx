@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { supabase } from "@/lib/supabase";
+import { getProjects } from "@/lib/queries";
 import CardProyek from "../components/CardProyek";
+
+export const dynamic = "force-dynamic";
 
 interface ProjectsPageProps {
     searchParams: Promise<{ category?: string }>;
@@ -8,21 +10,7 @@ interface ProjectsPageProps {
 
 export default async function Projects({ searchParams }: ProjectsPageProps) {
     const { category } = await searchParams;
-    const { data, error } = await supabase.from("proyek").select("*").order("id", { ascending: true });
-    if (error) {
-        return (
-            <main className="relative isolate mx-auto w-full max-w-6xl flex-1 overflow-hidden px-5 py-14 text-blue-950 sm:px-8 sm:py-20">
-                <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6">
-                    <h1 className="text-xl font-bold text-blue-900">Gagal memuat proyek</h1>
-                    <p className="mt-2 text-sm text-blue-800">{error.message}</p>
-                </div>
-            </main>
-        );
-    }
-    const projects = data.map((project) => ({
-        ...project,
-        tools: project.tools.split(",").map((tool: string) => tool.trim()),
-    }));
+    const projects = await getProjects();
     const categories = [...new Set(projects.map((project) => project.category))];
     const filteredProjects = category ? projects.filter((project) => project.category === category) : projects;
 
@@ -58,9 +46,13 @@ export default async function Projects({ searchParams }: ProjectsPageProps) {
                         </Link>
                     ))}
                 </div>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {filteredProjects.map((project) => <CardProyek key={project.slug} {...project} />)}
-                </div>
+                {filteredProjects.length === 0 ? (
+                    <p className="rounded-2xl border border-blue-200 bg-blue-50/70 p-6 text-sm font-medium text-blue-800">Belum ada proyek</p>
+                ) : (
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {filteredProjects.map((project) => <CardProyek key={project.slug} {...project} />)}
+                    </div>
+                )}
             </section>
 
             <section className="mt-16 grid gap-6 border-t border-blue-200 pt-8 sm:grid-cols-3">

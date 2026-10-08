@@ -1,16 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProject, projects } from "../projects";
+import { getProjectBySlug } from "@/lib/queries";
 import Badge from "../../components/Badge";
 
-export function generateStaticParams() {
-    return projects.map((project) => ({ slug: project.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function ProjectDetail({ params }: PageProps<"/proyek/[slug]">) {
     const { slug } = await params;
-    const project = getProject(slug);
+    const project = await getProjectBySlug(slug);
 
     if (!project) {
         notFound();
