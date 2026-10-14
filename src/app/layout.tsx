@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portofolio Irfan Syah",
+  title: "Irfan Syah",
   description: "Portofolio Irfan Syah RPL SMKN 1 Pasuruan",
 };
 
