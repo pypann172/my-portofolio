@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Irfan Syah",
-  description: "Portofolio Irfan Syah RPL SMKN 1 Pasuruan",
+  description: "Portofolio Irfan Syah Siswa RPL SMKN 1 Pasuruan",
 };
 
 export const dynamic = "force-dynamic";
