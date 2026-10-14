@@ -21,11 +21,11 @@ export default function Navbar({ namaTampil, logo }: NavbarProps) {
     const [themeReveal, setThemeReveal] = useState<{ x: number; y: number; isDark: boolean } | null>(null);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const menuItems = [
-        { label: 'Home', href: '/' },
-        { label: 'Projects', href: '/proyek' },
-        { label: 'Skills', href: '/keahlian' },
-        { label: 'About', href: '/tentang' },
-        { label: 'Contact', href: '/kontak' },
+        { label: 'Beranda', href: '/' },
+        { label: 'Proyek Web', href: '/proyek' },
+        { label: 'Keahlian', href: '/keahlian' },
+        { label: 'Tentang Irfan', href: '/tentang' },
+        { label: 'Kontak', href: '/kontak' },
         { label: 'CV', href: '/cv' }
     ];
 
@@ -100,7 +100,7 @@ export default function Navbar({ namaTampil, logo }: NavbarProps) {
     return (
         <nav className="global-navbar fixed left-0 right-0 top-0 z-50 mx-auto w-full px-3 pt-3 sm:px-6 sm:pt-4">
             <div className="relative z-20 mx-auto flex w-full max-w-6xl items-center justify-between gap-3 rounded-4xl border border-blue-200/80 bg-blue-50/80 px-3 py-3 shadow-[0_12px_30px_rgba(30,64,175,0.08)] backdrop-blur sm:gap-4 sm:px-4">
-                <Link href="/" className="flex shrink-0 items-center gap-3 pl-1" aria-label="Ipann home">
+                <Link href="/" className="flex shrink-0 items-center gap-3 pl-1" aria-label="Portfolio Moh. Irfan Syah, Full-Stack Developer">
                     <Image src={logo} alt={`Logo ${namaTampil}`} width={42} height={42}
                         className="h-9 w-9 rounded-full object-contain shadow-sm" />
                     <span className="text-sm font-semibold tracking-wide text-blue-950">{namaTampil}</span>

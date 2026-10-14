@@ -6,6 +6,7 @@ const cvImage = "/ipann/CV_Moh_Irfan_Syah.jpg";
 export const metadata = {
     title: "Preview CV | Ipann",
     description: "Preview curriculum vitae Moh. Irfan Syah.",
+    alternates: { canonical: "/cv/preview" },
 };
 
 export default function CvPreviewPage() {

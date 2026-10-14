@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { getContacts, getProfil } from "@/lib/queries";
 
+export const metadata = {
+    alternates: { canonical: "/kontak" },
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function Kontak() {

@@ -2,6 +2,10 @@ import Link from "next/link";
 import { getProjects } from "@/lib/queries";
 import CardProyek from "../components/CardProyek";
 
+export const metadata = {
+    alternates: { canonical: "/proyek" },
+};
+
 export const dynamic = "force-dynamic";
 
 interface ProjectsPageProps {

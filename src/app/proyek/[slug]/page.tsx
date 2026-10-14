@@ -6,6 +6,11 @@ import Badge from "../../components/Badge";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: PageProps<"/proyek/[slug]">) {
+    const { slug } = await params;
+    return { alternates: { canonical: `/proyek/${slug}` } };
+}
+
 export default async function ProjectDetail({ params }: PageProps<"/proyek/[slug]">) {
     const { slug } = await params;
     const project = await getProjectBySlug(slug);

@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
     title: "CV | Irfan Syah",
     description: "Curriculum vitae Moh. Irfan Syah.",
+    alternates: { canonical: "/cv" },
 };
 
 export default async function CvPage() {

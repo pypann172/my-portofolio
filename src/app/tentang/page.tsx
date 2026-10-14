@@ -2,6 +2,10 @@ import Image from 'next/image';
 import CounterApresiasi from '../components/CounterApresiasi';
 import { getApresiasi, getProfil } from "@/lib/queries";
 
+export const metadata = {
+    alternates: { canonical: "/tentang" },
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function Tentang() {
@@ -21,7 +25,7 @@ export default async function Tentang() {
                     <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl border-2 border-blue-300 float-motion" />
                     <div className="relative overflow-hidden rounded-4xl border-8 border-white bg-blue-950 shadow-2xl shadow-blue-900/15">
                         <div className="relative aspect-4/5">
-                            <Image src={profile?.fotoTentang || "/ipann/irfanFormal.jpeg"} alt={profile?.namaLengkap || "Moh. Irfan Syah"} fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover object-[67%_42%]" />
+                            <Image src={profile?.fotoTentang || "/ipann/irfanFormal.jpeg"} alt={`${profile?.namaLengkap || "Moh. Irfan Syah"}, Full-Stack Developer dari Pasuruan`} fill sizes="(max-width: 1024px) 90vw, 30vw" className="object-cover object-[67%_42%]" />
                         </div>
                     </div>
                     <div className="absolute -right-5 top-8 rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 shadow-lg shadow-blue-900/10 float-motion">

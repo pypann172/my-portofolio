@@ -9,3 +9,7 @@ export default async function TestSupabasePage() {
 }
 
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+    alternates: { canonical: "/test-supabase" },
+};

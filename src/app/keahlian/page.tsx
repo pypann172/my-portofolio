@@ -1,5 +1,9 @@
 import { getSkills, getWorkingStyle } from "@/lib/queries";
 
+export const metadata = {
+    alternates: { canonical: "/keahlian" },
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function Keahlian() {

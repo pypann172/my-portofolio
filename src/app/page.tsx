@@ -5,6 +5,10 @@ import SkillsTimeline from "./components/skills-timeline";
 import Gallery from "./components/gallery";
 import { getFeatureFlag, getGallery, getProfil, getSkillsTimeline } from "@/lib/queries";
 
+export const metadata = {
+    alternates: { canonical: "/" },
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
@@ -15,9 +19,6 @@ export default async function Home() {
         getFeatureFlag("buku_tamu"),
     ]);
     const fullName = profile?.namaLengkap ?? "";
-    const nameParts = fullName.trim().split(/\s+/);
-    const highlightedName = nameParts.pop() || "";
-    const leadingName = nameParts.join(" ");
     const displayName = profile?.namaTampil ?? "";
     const role = profile?.role ?? "";
 
@@ -33,7 +34,7 @@ export default async function Home() {
                         <span className="h-2 w-2 rounded-full bg-sky-500" />
                     </p>
                     <h1 className="max-w-3xl text-5xl font-bold leading-[0.98] tracking-tight text-blue-950 sm:text-7xl">
-                        {leadingName} <span className="text-blue-600">{highlightedName}</span>
+                        Moh. Irfan Syah <span className="text-blue-600">Developer</span>
                     </h1>
                     <h2 className="mt-6 text-xl font-semibold text-blue-800 sm:text-2xl">{role}</h2>
                     <p className="mt-6 max-w-xl text-base leading-8 text-blue-950/65 sm:text-lg">
@@ -55,7 +56,7 @@ export default async function Home() {
                         <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-blue-900">
                             <Image
                                 src={profile?.fotoHome || "/ipann/ipannOsis1.JPG"}
-                                alt={fullName}
+                                alt={`${fullName || "Moh. Irfan Syah"}, Full-Stack Developer dari Pasuruan`}
                                 fill
                                 priority
                                 sizes="(max-width: 1024px) 90vw, 36vw"

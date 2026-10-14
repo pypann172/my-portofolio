@@ -3,11 +3,12 @@ import Link from "next/link";
 import { getProfil } from "@/lib/queries";
 
 const footerLinks = [
-    { label: "Home", href: "/" },
-    { label: "Projects", href: "/proyek" },
-    { label: "Skills", href: "/keahlian" },
-    { label: "About", href: "/tentang" },
-    { label: "Contact", href: "/kontak" },
+    { label: "Portfolio Irfan Syah", href: "/" },
+    { label: "Proyek Web", href: "/proyek" },
+    { label: "Keahlian Full-Stack", href: "/keahlian" },
+    { label: "Tentang Moh. Irfan Syah", href: "/tentang" },
+    { label: "Kontak Irfan Syah", href: "/kontak" },
+    { label: "CV Moh. Irfan Syah", href: "/cv" },
 ];
 
 export default async function Footer() {
